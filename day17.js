@@ -15,9 +15,8 @@ function part1(input){
   var buffer = [0];
   var currPosition = 0;
   for(var i = 1; i<=2017; i++){
-    var position = ((currPosition + i + steps) % buffer.length) + 1;
-    buffer = [..._.slice(buffer, 0, position), i, ..._.slice(buffer, position, buffer.length)]
-    currPosition = position;
+     currPosition = ((currPosition + steps) % buffer.length) + 1;
+    buffer = [..._.slice(buffer, 0, currPosition), i, ..._.slice(buffer, currPosition, buffer.length)]
   }
   return buffer[currPosition+1];
 }
@@ -29,12 +28,11 @@ function part2(input){
   var numberWeWant;
   var currPosition = 0;
   for(var i = 1; i<=50000000; i++){
-    var position = ((currPosition + i + steps) % bufferLength) + 1;
-    if (position === positionOfZero+1){
+     currPosition = ((currPosition  + steps) % bufferLength) + 1;
+    if (currPosition === positionOfZero+1){
       numberWeWant = i;
     }
     bufferLength++;
-    currPosition = position;
   }
   return numberWeWant;
 }
