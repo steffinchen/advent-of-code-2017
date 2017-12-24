@@ -4,7 +4,7 @@ const _ = require('lodash');
 main();
 
 function main() {
-  var input = getInput('day17_input.txt');
+  var input = getInput('day18_input.txt');
   // var input = 'set a 1\nadd a 2\nmul a a\nmod a 5\nsnd a\nset a 0\nrcv a\njgz a -1\nset a 1\njgz a -2';
   console.log('part1', part1(input));
   //var input2 = 'snd 1\nsnd 2\nsnd p\nrcv a\nrcv b\nrcv c\nrcv d';
