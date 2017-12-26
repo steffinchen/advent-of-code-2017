@@ -30,70 +30,16 @@ function part1(input) {
   return mulCount;
 }
 
-function part2(input) {
+function part2() {
   var count = 0;
-  var start = 108100;
-  var limit = 125100;
-  var primes = getPrimes(start, limit);
-  for (i = start; i <= limit; i += 17) {
-    if (isPrime(primes, i)) {
-      count++;
-    }
-  }
-  return count;
+  var x = 93 * 100 + 100000;
+   for (var n = x; n <= x + 17000; n += 17) {
+       var d = 2;
+       while (n % d !== 0) d++;
+       if (n !== d) count++;
+   }
+   return count;
 }
-
-function isPrime(primes, i){
-  return _.indexOf(primes, i) > -1;
-}
-
-function getPrimes(start, n) {
-  var a = {};
-  for (i = start; i < n; i++) {
-    a[i] = true;
-  }
-
-  for (i = start; i < n; i++) {
-    if (a[i]) {
-      for (j = i ^ 2; j < n; j += i) {
-        a[j] = false;
-      }
-    }
-  }
-
-  var result = {};
-  var keys = _.keys(a);
-  for (var i = 0; i < keys.length; i++) {
-    if (a[keys[i]] === true) {
-      result[keys[i]] = true;
-    }
-  }
-  return result;
-}
-
-// function part2(input) {
-//   var instructions = parseInput(input);
-//   var nextInstrIndex = 0;
-//   var registers = initReg(instructions, 'a', 1);
-//   console.log(registers);
-//   var count = 0;
-//   while (nextInstrIndex >= 0 && nextInstrIndex < instructions.length) {
-//     if(count % 1000000000 === 0 ){
-//       console.log((count / 1000000000) + 'Bil');
-//     }
-//     var hOld = registers['h'];
-//     var instr = instructions[nextInstrIndex];
-//     var result = doInstr(instr, registers, nextInstrIndex);
-//     registers = result.registers;
-//     nextInstrIndex = result.nextInstrIndex;
-//     console.log('done', nextInstrIndex, instr, registers);
-//     if (hOld != registers['h']) {
-//       console.log('h changed', registers['h'], instr);
-//     }
-//     count++;
-//   }
-//   return registers['h'];
-// }
 
 function doInstr(instr, registers, nextInstrIndex) {
   if (instr.name === 'jnz') {
